@@ -1,0 +1,1 @@
+0|Janko|Patuljak|false|Mirka Cokotica 12|2206000820002|0652145715|janko|janko123|lekar|5000|sluzbaopstemedicine|null
