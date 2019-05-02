@@ -1,6 +1,9 @@
 package Korisnici;
 
+import java.time.LocalDateTime;
+
 import Korisnici.Enums.Sluzba;
+import Korisnici.Enums.Statuspregleda;
 import Korisnici.Enums.Uloga;
 
 public class MedicinskaSestra extends Korisnik {
@@ -26,16 +29,39 @@ public class MedicinskaSestra extends Korisnik {
 	public void setSluzba(Sluzba sluzba) {
 		this.sluzba = sluzba;
 	}
-			@Override
-	    	public String toString()
-	    	{
-	    	        String baza = super.toString();
-	    	
-	    	
-	    	        return baza + "|" + String.valueOf(this.plata) + "|" + String.valueOf(this.sluzba);
-	    	}
-
+	
+	public Pregled ZakaziPregled(LocalDateTime termin,int soba, Pacijent pacijent, Lekar lekar)
+	{
+		Pregled p = this.ZakaziPregled(termin,soba);
+		p.pacijent = pacijent;
+		p.lekar = lekar;
+		return p;
 	}
+	
+	@Override
+	public Pregled ZakaziPregled(LocalDateTime termin,int soba)
+	{
+		return new Pregled(null,null,termin,soba,Statuspregleda.zakazan);
+	}
+	
+	@Override
+	public String toText()
+	{
+		
+		return super.toText() +
+			   "Plata: " + String.valueOf(this.plata) + "\n" + 
+			   "Sluzba: " + String.valueOf(this.sluzba) + "\n";
+	}
+	
+	@Override
+	public String toString()
+	{
+	        String baza = super.toString();
+	
+	
+	        return baza + "|" + String.valueOf(this.plata) + "|" + String.valueOf(this.sluzba);
+	}
+}
 	
 	
 

@@ -19,12 +19,21 @@ public Pregled (Pacijent pacijent, Lekar lekar, LocalDateTime termin, int soba, 
 	this.termin = termin;
 	this.soba=soba;
 	this.status=status;
-	}
+}
+
+public String toText()
+{
+	return "Pacijent: " + this.pacijent.ime + " " + this.pacijent.prezime + "\n" +
+		   "Lekar: " + this.lekar.ime + " " + this.lekar.prezime + "\n" +
+		   "Termin: " + this.termin.toString() + "\n" +
+		   "Soba: " + String.valueOf(this.soba) + "\n" + 
+		   "Status: " + String.valueOf(status) + "\n";
+}
 
 @Override
 public String toString()
 {
-	return String.valueOf(this.pacijent) + "|" + String.valueOf(this.lekar) + "|"  +String.valueOf(this.termin) + "|" +String.valueOf(this.soba) + "|" +String.valueOf(this.status);
+	return String.valueOf(this.pacijent.id) + "|" + String.valueOf(this.lekar.id) + "|"  +String.valueOf(this.termin) + "|" +String.valueOf(this.soba) + "|" +String.valueOf(this.status);
 }
 
 public Pacijent getPacijent() {

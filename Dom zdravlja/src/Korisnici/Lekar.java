@@ -9,11 +9,22 @@ public class Lekar extends Korisnik {
 	protected Sluzba sluzba;
 	protected String specijalizacija;
 	
-	public Lekar (int id, String ime, String prezime, boolean pol, String adresa, String JMBG, String brojTelefona,String korisnickoIme,String lozinka,int plata,Sluzba sluzba)
+	public Lekar (int id, String ime, String prezime, boolean pol, String adresa, String JMBG, String brojTelefona,String korisnickoIme,String lozinka,int plata,Sluzba sluzba,String specijalizacija)
 	{
-	        super(id,ime,prezime,pol,adresa,JMBG,brojTelefona,korisnickoIme,lozinka,Uloga.lekar);
-	        this.plata = plata;
-	        this.sluzba = sluzba;
+        super(id,ime,prezime,pol,adresa,JMBG,brojTelefona,korisnickoIme,lozinka,Uloga.lekar);
+        this.plata = plata;
+        this.sluzba = sluzba;
+        this.specijalizacija = specijalizacija;
+	}
+	
+	@Override
+	public String toText()
+	{
+		
+		return super.toText() +
+			   "Plata: " + String.valueOf(this.plata) + "\n" + 
+			   "Sluzba: " + String.valueOf(this.sluzba) + "\n" +
+			   "Specijalizacija: " + this.specijalizacija + "\n";
 	}
 	
 	@Override
