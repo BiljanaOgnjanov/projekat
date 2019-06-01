@@ -10,6 +10,7 @@ import Korisnici.Pacijent;
 import Korisnici.Pregled;
 import Korisnici.Enums.Sluzba;
 import Korisnici.Enums.Statuspregleda;
+import gui.LoginProzor;
 
 public class Glavna {
 
@@ -20,24 +21,16 @@ public class Glavna {
 		dbServis.CitajKorisnike();
 		dbServis.UcitajPreglede();
 		
-		System.out.println("KORISNICI UCITANI IZ DATOTEKA:");
-		System.out.println("----------------------------------------------");
-		for(Korisnik k: dbServis.korisnici)
-			System.out.println(k.toText());
-		System.out.println("----------------------------------------------\n");
 		
-		System.out.println("PREGLEDI UCITANI IZ DATOTEKA:");
-		System.out.println("----------------------------------------------");
-		for(Pregled p: dbServis.pregledi)
-			System.out.println(p.toText());
-		System.out.println("----------------------------------------------\n");
 		
-		System.out.println("Dodavanje test podataka...");
-		// TODO: Dodati neke test podatke
+	
+		LoginProzor login = new LoginProzor(dbServis);
+		login.setVisible(true);
+	
 		
-		System.out.println("Snimanje dodanih podataka...");
-		dbServis.UpisiKorisnike();
-		dbServis.UpisiPreglede();
 	}
+	
+	
+	
 
 }

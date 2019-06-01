@@ -1,2 +1,2 @@
 0|Janko|Patuljak|false|Mirka Cokotica 12|2206000820002|0652145715|janko|janko123|lekar|5000|sluzbaopstemedicine|Anesteziolog
-1|Mirko|Gabor|false|Lolska 28|0606995820002|06111234366|nightwatch|nemamsifru123|pacijent|0|44523619237891278|2019-05-02T18:47:35.938233700|1
+1|Mirko|Gabor|false|Lolska 28|0606995820002|06111234366|bilja|11|pacijent|0|44523619237891278|2019-05-02T18:47:35.938233700|1

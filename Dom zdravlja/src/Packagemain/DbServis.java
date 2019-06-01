@@ -10,6 +10,7 @@ import Korisnici.Enums.Sluzba;
 import Korisnici.Enums.Statuspregleda;
 import Korisnici.Enums.Uloga;
 
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -29,6 +30,16 @@ public class DbServis {
 	{
 		this.korisnici = new ArrayList<Korisnik>();
 		this.pregledi = new ArrayList<Pregled>();
+	}
+	
+	public Korisnik login(String korisnickoIme, String sifra) {
+		for (Korisnik korisnik : korisnici) {
+			if(korisnik.GetKorisnickoIme().equals(korisnickoIme) &&
+					korisnik.GetLozinka().equals(sifra)) {
+				return korisnik;
+			}
+		}
+		return null;
 	}
 	
 	public void UpisiPreglede()
