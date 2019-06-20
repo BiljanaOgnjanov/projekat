@@ -10,9 +10,11 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 import Korisnici.Korisnik;
+import Korisnici.Enums.Uloga;
 import Packagemain.DbServis;
 
 import gui.formeZaPrikaz.KorisniciProzor;
+import gui.formeZaPrikaz.PreglediProzor;
 
 
 
@@ -24,7 +26,8 @@ public class GlavniProzor extends JFrame {
 	private Korisnik prijavljeniKorisnik;
 	private JMenu korisniciMeni;
 	private JMenuItem pregledKorisnika;
-	
+	private JMenu preglediMeni;
+	private JMenuItem pregledPregleda;
 	
 	
 	
@@ -43,11 +46,15 @@ public class GlavniProzor extends JFrame {
 	private void initMenu() {
 		
 		this.mainMenu = new JMenuBar();
+		this.preglediMeni = new JMenu("Pregledi");
+		this.pregledPregleda = new JMenuItem("Pregled pregleda");
 		this.korisniciMeni = new JMenu("Korisnici");
 		this.pregledKorisnika = new JMenuItem("Pregled korisnika");
 		this.korisniciMeni.add(this.pregledKorisnika);
-		this.mainMenu.add(this.korisniciMeni);
-		
+		if(this.prijavljeniKorisnik.GetUloga() == Uloga.medicinskaSestra)
+			this.mainMenu.add(this.korisniciMeni);
+		this.preglediMeni.add(this.pregledPregleda);
+		this.mainMenu.add(this.preglediMeni);
 
 		
 		setJMenuBar(this.mainMenu);
@@ -58,11 +65,18 @@ public class GlavniProzor extends JFrame {
 		this.pregledKorisnika.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				KorisniciProzor af = new KorisniciProzor(dbServis);
+				KorisniciProzor af = new KorisniciProzor(dbServis,prijavljeniKorisnik);
 				af.setVisible(true);
 			}
 		});
 		
+		this.pregledPregleda.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				PreglediProzor pp = new PreglediProzor(dbServis,prijavljeniKorisnik);
+				pp.setVisible(true);
+			}
+		});
 	}
 }
 	

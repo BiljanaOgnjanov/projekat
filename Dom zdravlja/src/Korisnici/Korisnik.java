@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 import Korisnici.Enums.Uloga;
 
-public abstract class Korisnik {
+public class Korisnik {
 
 	protected int id;
 	protected String ime;
@@ -123,7 +123,7 @@ public abstract class Korisnik {
 	        this.uloga = uloga;
 	}
 	
-	public Pregled ZakaziPregled(LocalDateTime termin,int soba)
+	public Pregled ZakaziPregled(LocalDateTime termin,int soba, String opis)
 	{
 		return null;
 	}

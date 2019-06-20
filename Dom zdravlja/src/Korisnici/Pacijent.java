@@ -43,9 +43,9 @@ public class Pacijent extends Korisnik {
 	}
 	
 	@Override
-	public Pregled ZakaziPregled(LocalDateTime termin,int soba)
+	public Pregled ZakaziPregled(LocalDateTime termin,int soba,String opis)
 	{
-		return new Pregled(this,this.izabranilekar,termin,soba,Statuspregleda.zatrazen);
+		return new Pregled(this,this.izabranilekar,termin,soba,Statuspregleda.zatrazen,opis);
 	}
 
 	@Override

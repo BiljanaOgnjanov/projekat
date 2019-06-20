@@ -19,6 +19,7 @@ import java.time.LocalDateTime;
 import java.io.BufferedWriter;
 import java.io.BufferedReader;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 
 public class DbServis {
@@ -70,11 +71,10 @@ public class DbServis {
 											  (Lekar)this.GetKorisnikById(Integer.parseInt(split[1])),
 											  LocalDateTime.parse(split[2]),
 											  Integer.parseInt(split[3]),
-											  Statuspregleda.valueOf(split[4])));
+											  Statuspregleda.valueOf(split[4]),split[5]));
 			}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (Exception e) {
+			
 		}
 	}
 	
@@ -88,6 +88,14 @@ public class DbServis {
 	
 	public void UpisiKorisnike() 
 	{
+		// sortiraj po ulozi tako da su doktori pre pacijenata
+		korisnici.sort(new Comparator<Korisnik>() {
+			@Override
+			public int compare(Korisnik o1, Korisnik o2) {
+				return o2.GetUloga().getValue() - o1.GetUloga().getValue();
+			}
+			
+		});
 		File kkf = new File("src/Fajlovi/korisnici.txt");
 		try {
 			BufferedWriter wr = new BufferedWriter(new FileWriter(kkf));
@@ -152,9 +160,7 @@ public class DbServis {
 						break;
 				}
 			}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (Exception e) {
 		}
 	}
 }

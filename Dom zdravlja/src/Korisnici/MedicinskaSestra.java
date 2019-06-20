@@ -30,18 +30,18 @@ public class MedicinskaSestra extends Korisnik {
 		this.sluzba = sluzba;
 	}
 	
-	public Pregled ZakaziPregled(LocalDateTime termin,int soba, Pacijent pacijent, Lekar lekar)
+	public Pregled ZakaziPregled(LocalDateTime termin,int soba, Pacijent pacijent, Lekar lekar,String opis)
 	{
-		Pregled p = this.ZakaziPregled(termin,soba);
+		Pregled p = this.ZakaziPregled(termin,soba,opis);
 		p.pacijent = pacijent;
 		p.lekar = lekar;
 		return p;
 	}
 	
 	@Override
-	public Pregled ZakaziPregled(LocalDateTime termin,int soba)
+	public Pregled ZakaziPregled(LocalDateTime termin,int soba,String opis)
 	{
-		return new Pregled(null,null,termin,soba,Statuspregleda.zakazan);
+		return new Pregled(null,null,termin,soba,Statuspregleda.zakazan,opis);
 	}
 	
 	@Override

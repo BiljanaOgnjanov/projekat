@@ -11,14 +11,16 @@ public class Pregled {
 	protected LocalDateTime termin;
 	protected int soba;
 	protected Statuspregleda status;
+	public String opis;
 
 
-public Pregled (Pacijent pacijent, Lekar lekar, LocalDateTime termin, int soba, Statuspregleda status) {
+public Pregled (Pacijent pacijent, Lekar lekar, LocalDateTime termin, int soba, Statuspregleda status,String opis) {
 	this.pacijent=pacijent;
 	this.lekar = lekar;
 	this.termin = termin;
 	this.soba=soba;
 	this.status=status;
+	this.opis = opis;
 }
 
 public String toText()
@@ -27,13 +29,14 @@ public String toText()
 		   "Lekar: " + this.lekar.ime + " " + this.lekar.prezime + "\n" +
 		   "Termin: " + this.termin.toString() + "\n" +
 		   "Soba: " + String.valueOf(this.soba) + "\n" + 
-		   "Status: " + String.valueOf(status) + "\n";
+		   "Status: " + String.valueOf(status) + "\n" + 
+		   "Opis: " + this.opis + "\n";
 }
 
 @Override
 public String toString()
 {
-	return String.valueOf(this.pacijent.id) + "|" + String.valueOf(this.lekar.id) + "|"  +String.valueOf(this.termin) + "|" +String.valueOf(this.soba) + "|" +String.valueOf(this.status);
+	return String.valueOf(this.pacijent.id) + "|" + String.valueOf(this.lekar.id) + "|"  +String.valueOf(this.termin) + "|" +String.valueOf(this.soba) + "|" +String.valueOf(this.status) + "|" + this.opis;
 }
 
 public Pacijent getPacijent() {
