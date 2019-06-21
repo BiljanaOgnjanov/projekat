@@ -1,8 +1,8 @@
 2|Biljana|Ognjanov|true|Palmoticeva 2|054324|5334634645|bilja2|11|medicinskaSestra|2000|stomatoloskasluzba
 0|Mirjana|Krstic|true|Ulica Danila Kisa 25|2206000820002|0652145715|mira|11|lekar|5000|sluzbaopstemedicine|Anesteziolog
 3|Janko|Krstic|false|Ulica Danila Kisa 25|1306000820002|0652145715|janko|janko123|lekar|5000|sluzbaopstemedicine|Anesteziolog
-4|Jovan|Dobrijevic|false|Novosadska 420|42384923804983290|432743847|jovo|021|lekar|2000|sluzbaopstemedicine|decija medicina
-5|Danica|Ilic|true|Beogradski Put 12|42837498237|47238748937|danica|miki|lekar|244|sluzbaopstemedicine|nema
-6|Miki|Jovic|false|Helska 231|3423489|473284798327|miki|jovo|lekar|0|sluzbaopstemedicine|nema
-1|Bilja|Jelic|false|Bulevar Evrope 28|0606995820002|06111234366|bilja|11|pacijent|5|44523619237891278|2019-05-02T18:47:35.938233700|1
+4|Jovan|Dobrijevic|false|Novosadska 420|42384923804983290|432743847|jovo|99|lekar|2000|sluzbaopstemedicine|decija medicina
+5|Danica|Ilic|true|Beogradski Put 12|42837498237|47238748937|danica|dana|lekar|244|sluzbaopstemedicine|nema
+6|Miki|Jovic|false|Ulica Viktora Igoa 231|3423489|473284798327|miki|jovicm|lekar|0|sluzbaopstemedicine|nema
+1|Bilja|Jelic|true|Bulevar Evrope 28|0606995820002|06111234366|bilja|11|pacijent|0|44523619237891278|2019-05-02T18:47:35.938233700|1
 7|Ivana|Metic|false|Bulevar Patrijarha Pavla 28|0606995820002|061144674366|ivanaa|11|pacijent|5|44523619237891278|2019-05-02T18:47:35.938233700|1

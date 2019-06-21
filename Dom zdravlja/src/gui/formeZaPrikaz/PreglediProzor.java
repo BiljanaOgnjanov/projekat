@@ -99,9 +99,9 @@ public class PreglediProzor extends JFrame {
 		String[] zaglavlje = new String[] {"ID","Soba","Termin","Pacijent","Status","Lekar","Opis"};
 		Object[][] podaci = new Object[pregledi.size()][zaglavlje.length];
 		
-		for(int i = 0; i < this.dbServis.pregledi.size(); i++)
+		for(int i = 0; i < this.pregledi.size(); i++)
 		{
-			Pregled p = this.dbServis.pregledi.get(i);
+			Pregled p = this.pregledi.get(i);
 			podaci[i][0] = i;
 			podaci[i][1] = p.getSoba();
 			podaci[i][2] = p.getTermin().toString();
@@ -142,10 +142,12 @@ public class PreglediProzor extends JFrame {
 				}else {
 					int id = (int) preglediTabela.getValueAt(red, 0);
 					Pregled p = pregledi.get(id);
-					if(korisnik.GetUloga() == Uloga.pacijent && p.getStatus() != Statuspregleda.zatrazen)
+					if(korisnik.GetUloga() == Uloga.pacijent)
 					{
-						JOptionPane.showMessageDialog(null, "Ne mozete menjati ovaj pregled.", "Greska", JOptionPane.WARNING_MESSAGE);
-						return;
+						if(p.getStatus() != Statuspregleda.zatrazen && p.getStatus() != Statuspregleda.zakazan) {
+							JOptionPane.showMessageDialog(null, "Ne mozete menjati ovaj pregled.", "Greska", JOptionPane.WARNING_MESSAGE);
+							return;
+						}
 					}
 					PreglediForma pf = new PreglediForma(dbServis,p,korisnik);
 					pf.setVisible(true);
@@ -170,6 +172,12 @@ public class PreglediProzor extends JFrame {
 						if(izbor == JOptionPane.YES_OPTION) {
 							if(korisnik.GetUloga() != Uloga.medicinskaSestra) 
 							{
+								if(korisnik.GetUloga() == Uloga.pacijent) {
+									if (p.getStatus() != Statuspregleda.zatrazen && p.getStatus() != Statuspregleda.zakazan) {
+										JOptionPane.showMessageDialog(null, "Ovaj pregled ne moze biti otkazan.", "Greska", JOptionPane.WARNING_MESSAGE);
+										return;
+									}
+								}
 								dbServis.pregledi.remove(p);
 								p.setStatus(Statuspregleda.otkazan);
 								dbServis.pregledi.add(p);
@@ -198,18 +206,20 @@ public class PreglediProzor extends JFrame {
 						}
 						else 
 						{
-							izbor = JOptionPane.showConfirmDialog(null,"Da li zelite da zavrsite pregled?", korisnik.GetIme() + " - Potvrda zavrsetka", JOptionPane.YES_NO_OPTION);
-							if(izbor == JOptionPane.YES_OPTION) {
-								dbServis.pregledi.remove(p);
-								p.setStatus(Statuspregleda.zavrsen);
-								dbServis.pregledi.add(p);
-								dbServis.UpisiPreglede();
-								
-								PreglediProzor pp = new PreglediProzor(dbServis,korisnik);
-								pp.setVisible(true);
-								
-								setVisible(false);
-								dispose();
+							if(korisnik.GetUloga() != Uloga.pacijent) {
+								izbor = JOptionPane.showConfirmDialog(null,"Da li zelite da zavrsite pregled?", korisnik.GetIme() + " - Potvrda zavrsetka", JOptionPane.YES_NO_OPTION);
+								if(izbor == JOptionPane.YES_OPTION) {
+									dbServis.pregledi.remove(p);
+									p.setStatus(Statuspregleda.zavrsen);
+									dbServis.pregledi.add(p);
+									dbServis.UpisiPreglede();
+									
+									PreglediProzor pp = new PreglediProzor(dbServis,korisnik);
+									pp.setVisible(true);
+									
+									setVisible(false);
+									dispose();
+								}
 							}
 						}
 					}
